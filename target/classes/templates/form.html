@@ -4,7 +4,6 @@
     <table>
         <tr>
             <td><p th:text="#{arsti.nimi}">arsti.nimi</p></td>
-            <!-- <td><input type="text" th:field="*{dentistName}"/></td>-->
             <td>
                 <select th:field="*{dentistId}">
                     <option th:each="dentist : ${dentists}"
@@ -22,6 +21,9 @@
         <tr>
             <td>
                 <button type="submit" th:text="#{registreeri.visiidile}"></button>
+            </td>
+            <td>
+                <button type="button" th:text="#{vaata.visiite}" onclick="window.location.href = '/visits';"></button>
             </td>
         </tr>
     </table>

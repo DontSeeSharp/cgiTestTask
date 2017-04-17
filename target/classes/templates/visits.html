@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Visits</title>
+</head>
+<body>
+    <h1>Visits:</h1>
+    <table style="width:100%">
+        <tr>
+            <th>Date and time</th>
+            <th>Dentist name</th>
+        </tr>
+        <tr th:each="visit : ${visits}">
+            <td><p th:text="${visit.visitDate}"></p></td>
+            <td><p th:text="${visit.dentist.dentistName}"></p></td>
+        </tr>
+    </table>
+</body>
+</html>

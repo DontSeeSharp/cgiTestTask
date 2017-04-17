@@ -1,6 +1,7 @@
 package com.cgi.dentistapp.controller;
 
 import com.cgi.dentistapp.dao.entity.DentistEntity;
+import com.cgi.dentistapp.dao.entity.DentistVisitEntity;
 import com.cgi.dentistapp.dto.DentistVisitDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -34,6 +35,13 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
         List<DentistEntity> dentsists = dentistVisitService.listDentists();
         model.addAttribute("dentists", dentsists);
         return "form";
+    }
+
+    @GetMapping("/visits")
+    public String showVisits(DentistVisitDTO dentistVisitDTO, Model model) {
+        List<DentistVisitEntity> visits = dentistVisitService.listVisits();
+        model.addAttribute("visits", visits);
+        return "visits";
     }
 
     @PostMapping("/")
