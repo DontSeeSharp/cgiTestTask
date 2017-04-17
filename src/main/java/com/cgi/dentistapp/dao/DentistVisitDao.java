@@ -22,4 +22,8 @@ public class DentistVisitDao {
     public List<DentistVisitEntity> getAllVisits() {
         return entityManager.createQuery("SELECT e FROM DentistVisitEntity e").getResultList();
     }
+
+    public List<String> getAllDentists() {
+        return entityManager.createQuery("SELECT DISTINCT e.dentistName FROM DentistVisitEntity e").getResultList();
+    }
 }

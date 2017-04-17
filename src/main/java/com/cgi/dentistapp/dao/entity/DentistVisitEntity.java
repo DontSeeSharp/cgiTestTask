@@ -1,5 +1,6 @@
 package com.cgi.dentistapp.dao.entity;
 
+import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -17,14 +18,22 @@ public class DentistVisitEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "dentist_name")
+    private String dentistName;
+
+    @Column(name = "visit_date")
+    private Date visitDate;
+
     @Column(name = "visit_time")
-    private Date visitTime;
+    private Time visitTime;
 
     public DentistVisitEntity() {
     }
 
-    public DentistVisitEntity(String dentistName, Date visitTime) {
+    public DentistVisitEntity(String dentistName, Date visitDate, Time visitTime) {
+        this.setVisitDate(visitDate);
         this.setVisitTime(visitTime);
+        this.setDentistName(dentistName);
     }
 
     public Long getId() {
@@ -35,12 +44,27 @@ public class DentistVisitEntity {
         this.id = id;
     }
 
-    public Date getVisitTime() {
+    public Date getVisitDate() {
+        return visitDate;
+    }
+
+    public void setVisitDate(Date visitDate) {
+        this.visitDate = visitDate;
+    }
+
+    public Time getVisitTime() {
         return visitTime;
     }
 
-    public void setVisitTime(Date visitTime) {
+    public void setVisitTime(Time visitTime) {
         this.visitTime = visitTime;
     }
 
+    public String getDentistName() {
+        return dentistName;
+    }
+
+    public void setDentistName(String dentistName) {
+        this.dentistName = dentistName;
+    }
 }

@@ -1,5 +1,6 @@
 package com.cgi.dentistapp.service;
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
@@ -18,13 +19,17 @@ public class DentistVisitService {
     @Autowired
     private DentistVisitDao dentistVisitDao;
 
-    public void addVisit(String dentistName, Date visitTime) {
-        DentistVisitEntity visit = new DentistVisitEntity(dentistName, visitTime);
+    public void addVisit(String dentistName, Date visitDate, Time visitTime) {
+        DentistVisitEntity visit = new DentistVisitEntity(dentistName, visitDate, visitTime);
         dentistVisitDao.create(visit);
     }
 
     public List<DentistVisitEntity> listVisits () {
         return dentistVisitDao.getAllVisits();
+    }
+
+    public List<String> listDentists () {
+        return dentistVisitDao.getAllDentists();
     }
 
 }

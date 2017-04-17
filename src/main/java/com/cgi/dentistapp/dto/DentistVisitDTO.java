@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -16,13 +17,17 @@ public class DentistVisitDTO {
 
     @NotNull
     @DateTimeFormat(pattern = "dd.MM.yyyy")
-    Date visitTime;
+    Date visitDate;
+
+    @NotNull
+    Time visitTime;
 
     public DentistVisitDTO() {
     }
 
-    public DentistVisitDTO(String dentistName, Date visitTime) {
+    public DentistVisitDTO(String dentistName, Date visitDate, Time visitTime) {
         this.dentistName = dentistName;
+        this.visitDate = visitDate;
         this.visitTime = visitTime;
     }
 
@@ -34,11 +39,19 @@ public class DentistVisitDTO {
         this.dentistName = dentistName;
     }
 
-    public Date getVisitTime() {
+    public Date getVisitDate() {
+        return visitDate;
+    }
+
+    public void setVisitDate(Date visitDate) {
+        this.visitDate = visitDate;
+    }
+
+    public Time getVisitTime() {
         return visitTime;
     }
 
-    public void setVisitTime(Date visitTime) {
+    public void setVisitTime(Time visitTime) {
         this.visitTime = visitTime;
     }
 }
