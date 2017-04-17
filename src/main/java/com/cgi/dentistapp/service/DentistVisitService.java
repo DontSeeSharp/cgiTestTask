@@ -33,11 +33,39 @@ public class DentistVisitService {
         return dentistVisitDao.getAllVisits();
     }
 
+    public List<DentistVisitEntity> listVisitsByDentist(DentistEntity dentistEntity) {
+        return dentistVisitDao.getVisitsByDentist(dentistEntity);
+    }
+
+    public List<DentistVisitEntity> listVisitsByDentistAndDate(DentistEntity dentistEntity, Date start) {
+        return dentistVisitDao.getVisitsByAndDates(dentistEntity, start);
+    }
+
+    public List<DentistVisitEntity> listVisitsByDentistAndDate(DentistEntity dentistEntity, Date start
+            , Date finish) {
+        return dentistVisitDao.getVisitsByAndDates(dentistEntity, start, finish);
+    }
+
+    public List<DentistVisitEntity> listVisitsByDentistAndEnd(DentistEntity dentistId, Date end) {
+        return dentistVisitDao.getVisitsByDentistAndEnd(dentistId, end);
+    }
+
+    public List<DentistVisitEntity> listByEnd(Date end) {
+        return dentistVisitDao.getVisitsByEndDate(end);
+    }
+
     public List<DentistEntity> listDentists () {
         return dentistDao.getAllDentists();
     }
 
     public DentistEntity getDentistById(Long id) {
         return dentistDao.getDentistById(id);
+    }
+
+
+
+
+    public List<DentistVisitEntity> listByStart(Date start) {
+        return dentistVisitDao.getVisitsByStartDate(start);
     }
 }

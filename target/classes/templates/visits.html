@@ -4,6 +4,25 @@
     <title>Visits</title>
 </head>
 <body>
+    <form th:action="@{/visits}" th:object="${searchDTO}" method="post">
+        <table>
+            <tr>
+                <td>Dentist name:</td>
+                <td>
+                    <select th:field="*{dentistId}">
+                        <option th:each="dentist : ${dentists}"
+                                th:value="${dentist.id}"
+                                th:text="${dentist.dentistName}">dentist</option>
+                    </select>
+                </td>
+                <td>Start date:</td>
+                <td><input type="datetime-local" th:field="*{start}"/></td>
+                <td>End date:</td>
+                <td><input type="datetime-local" th:field="*{end}"/></td>
+                <td><button type="submit">Search</button></td>
+            </tr>
+        </table>
+    </form>
     <h1>Visits:</h1>
     <table style="width:100%">
         <tr>
