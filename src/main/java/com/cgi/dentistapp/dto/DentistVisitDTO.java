@@ -16,6 +16,7 @@ public class DentistVisitDTO {
     Long dentistId;
 
     @NotNull
+    @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")
     Date visitDate;
 
     public DentistVisitDTO() {
