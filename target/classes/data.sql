@@ -1,0 +1,1 @@
+INSERT INTO DENTIST (DENTIST_ID, DENTIST_NAME) VALUES (1, 'Siim Sams'), (2, 'Erkki Nool');
