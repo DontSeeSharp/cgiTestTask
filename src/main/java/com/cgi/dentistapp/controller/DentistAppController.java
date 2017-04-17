@@ -1,5 +1,6 @@
 package com.cgi.dentistapp.controller;
 
+import com.cgi.dentistapp.dao.entity.DentistEntity;
 import com.cgi.dentistapp.dto.DentistVisitDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -30,18 +31,21 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
 
     @GetMapping("/")
     public String showRegisterForm(DentistVisitDTO dentistVisitDTO, Model model) {
-        List<String> dentsists = dentistVisitService.listDentists();
+        List<DentistEntity> dentsists = dentistVisitService.listDentists();
         model.addAttribute("dentists", dentsists);
         return "form";
     }
 
     @PostMapping("/")
-    public String postRegisterForm(@Valid DentistVisitDTO dentistVisitDTO, BindingResult bindingResult) {
+    public String postRegisterForm(@Valid DentistVisitDTO dentistVisitDTO, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            List<DentistEntity> dentsists = dentistVisitService.listDentists();
+            model.addAttribute("dentists", dentsists);
             return "form";
         }
 
-        dentistVisitService.addVisit(dentistVisitDTO.getDentistName(), dentistVisitDTO.getVisitDate(), dentistVisitDTO.getVisitTime());
+        dentistVisitService.addVisit(dentistVisitService.getDentistById(dentistVisitDTO.getDentistId())
+                , dentistVisitDTO.getVisitDate());
         return "redirect:/results";
     }
 

@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.cgi.dentistapp.dao.DentistDao;
+import com.cgi.dentistapp.dao.entity.DentistEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +21,11 @@ public class DentistVisitService {
     @Autowired
     private DentistVisitDao dentistVisitDao;
 
-    public void addVisit(String dentistName, Date visitDate, Time visitTime) {
-        DentistVisitEntity visit = new DentistVisitEntity(dentistName, visitDate, visitTime);
+    @Autowired
+    private DentistDao dentistDao;
+
+    public void addVisit(DentistEntity dentistEntity, Date visitDate) {
+        DentistVisitEntity visit = new DentistVisitEntity(dentistEntity, visitDate);
         dentistVisitDao.create(visit);
     }
 
@@ -28,8 +33,11 @@ public class DentistVisitService {
         return dentistVisitDao.getAllVisits();
     }
 
-    public List<String> listDentists () {
-        return dentistVisitDao.getAllDentists();
+    public List<DentistEntity> listDentists () {
+        return dentistDao.getAllDentists();
     }
 
+    public DentistEntity getDentistById(Long id) {
+        return dentistDao.getDentistById(id);
+    }
 }

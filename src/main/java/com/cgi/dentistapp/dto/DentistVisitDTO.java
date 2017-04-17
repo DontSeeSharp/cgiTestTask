@@ -1,5 +1,6 @@
 package com.cgi.dentistapp.dto;
 
+import com.cgi.dentistapp.dao.entity.DentistEntity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
@@ -11,32 +12,26 @@ import java.util.Date;
  * Created by serkp on 2.03.2017.
  */
 public class DentistVisitDTO {
-
-    @Size(min = 1, max = 50)
-    String dentistName;
+    @NotNull
+    Long dentistId;
 
     @NotNull
-    @DateTimeFormat(pattern = "dd.MM.yyyy")
     Date visitDate;
-
-    @NotNull
-    Time visitTime;
 
     public DentistVisitDTO() {
     }
 
-    public DentistVisitDTO(String dentistName, Date visitDate, Time visitTime) {
-        this.dentistName = dentistName;
+    public DentistVisitDTO(Long dentistId, Date visitDate) {
+        this.dentistId = dentistId;
         this.visitDate = visitDate;
-        this.visitTime = visitTime;
     }
 
-    public String getDentistName() {
-        return dentistName;
+    public Long getDentistId() {
+        return dentistId;
     }
 
-    public void setDentistName(String dentistName) {
-        this.dentistName = dentistName;
+    public void setDentistId(Long dentistId) {
+        this.dentistId = dentistId;
     }
 
     public Date getVisitDate() {
@@ -45,13 +40,5 @@ public class DentistVisitDTO {
 
     public void setVisitDate(Date visitDate) {
         this.visitDate = visitDate;
-    }
-
-    public Time getVisitTime() {
-        return visitTime;
-    }
-
-    public void setVisitTime(Time visitTime) {
-        this.visitTime = visitTime;
     }
 }
