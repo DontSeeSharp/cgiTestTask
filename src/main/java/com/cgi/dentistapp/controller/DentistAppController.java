@@ -52,6 +52,12 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
         return "redirect:/results";
     }
 
+    @RequestMapping(value = "/visits/{id}")
+    public String showDetailed(@PathVariable Long id,Model model) {
+        model.addAttribute("visit", dentistVisitService.getVisitById(id));
+        return "detailed";
+    }
+
     @GetMapping("/visits")
     public String showVisits(SearchDTO searchDTO, Model model) {
         List<DentistVisitEntity> visits = dentistVisitService.listVisits();

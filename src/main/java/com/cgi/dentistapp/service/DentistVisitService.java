@@ -62,10 +62,11 @@ public class DentistVisitService {
         return dentistDao.getDentistById(id);
     }
 
-
-
-
     public List<DentistVisitEntity> listByStart(Date start) {
         return dentistVisitDao.getVisitsByStartDate(start);
+    }
+
+    public DentistVisitEntity getVisitById(Long id) {
+        return dentistVisitDao.getVisitById(id);
     }
 }

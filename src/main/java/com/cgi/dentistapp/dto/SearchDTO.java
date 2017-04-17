@@ -14,7 +14,6 @@ import java.util.Date;
  */
 
 public class SearchDTO {
-    @NotNull
     Long dentistId;
 
     @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")

@@ -25,6 +25,10 @@ public class DentistVisitDao {
         return entityManager.createQuery("SELECT e FROM DentistVisitEntity e").getResultList();
     }
 
+    public DentistVisitEntity getVisitById(Long id) {
+        return entityManager.find(DentistVisitEntity.class, id);
+    }
+
     public List<DentistVisitEntity> getVisitsByDentist(DentistEntity dentistId) {
         return entityManager.createQuery("SELECT e FROM DentistVisitEntity e WHERE e.dentist = :dentistId")
                 .setParameter("dentistId", dentistId)

@@ -28,10 +28,17 @@
         <tr>
             <th>Date and time</th>
             <th>Dentist name</th>
+            <th></th>
         </tr>
         <tr th:each="visit : ${visits}">
             <td><p th:text="${visit.visitDate}"></p></td>
             <td><p th:text="${visit.dentist.dentistName}"></p></td>
+            <td>
+                <button type="button" th:value="${visit.id}"
+                        onclick="window.location.href = '/visits/' + this.value;">
+                    More
+                </button>
+            </td>
         </tr>
     </table>
 </body>
